@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #growing-text {
+                font-size: 10px; /* starting size */
+                animation: grow 5s forwards, rainbow 4s infinite; /* animation name, duration, and fill mode */
+                position: absolute; /* take it out of the normal flow */
+                top: 50%; /* move it 50% down from the top */
+                left: 50%; /* move it 50% right from the left */
+                transform: translate(-50%, -50%); /* adjust the position to be perfectly centered */
+                text-align: center; /* center the text horizontally */
+                font-family: "Comic Sans MS", cursive;
+                background: linear-gradient(to right,green, yellow, orange, red,orange,yellow,green,blue,indigo, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+                background-clip: text; /* added standard property */
+                -webkit-text-fill-color: transparent;
+                text-fill-color: transparent; /* added standard property */
+                background-size: 400% 100%; /* added to make the gradient larger than the text */
+                white-space: nowrap; /* add this property */
+            }
+            #growing-text2 {
+                font-size: 1px; /* starting size */
+                animation: grow2 10s forwards, rainbow 4s infinite; /* animation name, duration, and fill mode */
+                position: absolute; /* take it out of the normal flow */
+                top: 75%; /* move it 50% down from the top */
+                left: 50%; /* move it 50% right from the left */
+                transform: translate(-50%, -50%); /* adjust the position to be perfectly centered */
+                text-align: center; /* center the text horizontally */
+                font-family: "Comic Sans MS", cursive;
+                background: linear-gradient(to right,green, yellow, orange, red,orange,yellow,green,blue,indigo, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+                background-clip: text; /* added standard property */
+                -webkit-text-fill-color: transparent;
+                text-fill-color: transparent; /* added standard property */
+                background-size: 400% 100%; /* added to make the gradient larger than the text */
+                white-space: nowrap; /* add this property */
+            }
+
+            @keyframes grow {
+                0% {
+                    font-size: 10px; /* starting size */
+                }
+                100% {
+                    font-size: 72px; /* ending size */
+                }
+            }
+            @keyframes grow2 {
+                0% {
+                    font-size: 1px; /* starting size */
+                }
+                100% {
+                    font-size: 52px; /* ending size */
+                }
+            }
+
+            @keyframes rainbow {
+                0% {
+                    background-position: 0% 50%;
+                }
+                100% {
+                    background-position: 100% 50%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <video id="background-video" autoplay loop >
+            <source src="rickroll.mp4" type="video/mp4">
+        </video>
+        <span id="growing-text">HAHAHAHA , SE FUDEU</span>
+        <span id="growing-text2">Agora sustenta essa pika ai</span>
+    </body>
+</html>
