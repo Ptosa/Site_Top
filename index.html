@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yes or No Page</title>
+  <title>Site</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,52 +10,55 @@
       display: flex; /* Use flexbox to center content */
       justify-content: center; /* Center horizontally */
       align-items: center; /* Center vertically */
-      flex-direction: column; /* Stack elements vertically */
     }
-    #big-text {
+    #click-text {
       font-size: 36px;
-      margin-bottom: 20px;
-    }
-    #button-container {
-      display: flex; /* Use flexbox to center buttons */
-      justify-content: space-between; /* Space buttons evenly */
-      width: 400px; /* Set a width for the button container */
-    }
-    #no-button, #yes-button {
-      width: 150px; /* Make buttons wider */
-      height: 50px; /* Make buttons taller */
-      font-size: 24px; /* Increase font size */
       cursor: pointer; /* Add a pointer cursor */
+      transition: transform 5s ease-in-out; /* Add transition effect */
+    }
+    .animate {
+      animation: slide-in 5s ease-in-out; /* Add animation */
+    }
+    @keyframes slide-in {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h1 id="big-text">Do you want to proceed?</h1>
-  <div id="button-container">
-    <a href="yes.html"><button id="yes-button">Sim</button></a>
-    <button id="no-button">Não</button>
-  </div>
+  <audio autoplay>
+    <source src="LovinYou.mp3" type="audio/mp3">
+  </audio>
+  <h1 id="click-text">Oi !</h1>
 
   <script>
-    const noButton = document.getElementById('no-button');
+    const clickText = document.getElementById('click-text');
+    let clickCount = 0;
+    const texts = [
+      'Sei que a gente se conhece a pouco tempo...',
+      'E como o tempo passa mais rapido fazendo algo que a gente gosta...',
+      'Parece que é menos tempo ainda...',
+      'Mas pretendo passar mais tempo ainda com você...',
+      'E você sabia que essa pergunta viria...',
+      'Então...'
+    ];
 
-    // Function to generate a random position for the no-button
-    function randomPosition() {
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      const buttonWidth = noButton.offsetWidth;
-      const buttonHeight = noButton.offsetHeight;
-
-      const newLeft = Math.floor(Math.random() * (viewportWidth - buttonWidth));
-      const newTop = Math.floor(Math.random() * (viewportHeight - buttonHeight));
-
-      noButton.style.position = 'absolute'; // Add absolute positioning
-      noButton.style.left = `${newLeft}px`;
-      noButton.style.top = `${newTop}px`;
-    }
-
-    // Call the function to generate a new random position on mouseover
-    noButton.addEventListener('mouseover', randomPosition);
+    clickText.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount < 7) {
+        clickText.textContent = texts[clickCount - 1];
+        clickText.classList.add('animate'); // Add animation class
+        setTimeout(() => {
+          clickText.classList.remove('animate'); // Remove animation class after 0.5s
+        }, 50000);
+      } else {
+        window.location.href = 'question.html';
+      }
+    });
   </script>
 </body>
 </html>
