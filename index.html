@@ -32,12 +32,67 @@
       flex-direction: column; /* Stack elements vertically */
       align-items: center; /* Center horizontally */
     }
+    .animate {
+      animation: slide-in 4s;
+    }
+    @keyframes slide-in {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    .animate-top {
+      animation: slide-in-top 4s;
+    }
+    @keyframes slide-in-top {
+      0% {
+        transform: translateY(-100vh);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .animate-bottom {
+      animation: slide-in-bottom 4s;
+    }
+    @keyframes slide-in-bottom {
+      0% {
+        transform: translateY(100vh);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .animate-left {
+      animation: slide-in-left 4s;
+    }
+    @keyframes slide-in-left {
+      0% {
+        transform: translateX(-100vw);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    .animate-right {
+      animation: slide-in-right 4s;
+    }
+    @keyframes slide-in-right {
+      0% {
+        transform: translateX(100vw);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 <body>
-    <audio autoplay>
-        <source src="LovinYou.mp3" type="audio/mp3">
-    </audio>
+  <audio autoplay>
+    <source src="LovinYou.mp3" type="audio/mp3">
+  </audio>
   <h1 id="click-text">Oi!</h1>
   <div id="question-container">
     <h1 id="big-text">Quer namorar comigo?</h1>
@@ -61,19 +116,22 @@
       'Então...'
     ];
 
+    const animations = ['animate-top', 'animate-bottom', 'animate-left', 'animate-right'];
+
     clickText.addEventListener('click', () => {
-  clickCount++;
-  if (clickCount < 7) {
-    clickText.textContent = texts[clickCount - 1];
-    clickText.classList.add('animate'); // Add animation class
-    setTimeout(() => {
-      clickText.classList.remove('animate'); // Remove animation class after 0.5s
-    }, 500);
-  } else {
-    clickText.style.display = 'none'; // Hide the click-text element
-    questionContainer.style.display = 'flex'; // Show the question container
-  }
-});
+      clickCount++;
+      if (clickCount < 7) {
+        clickText.textContent = texts[clickCount - 1];
+        const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+        clickText.classList.add(randomAnimation); // Add random animation class
+        setTimeout(() => {
+          clickText.classList.remove(randomAnimation); // Remove animation class after 0.5s
+        }, 4000);
+      } else {
+        clickText.style.display = 'none'; //// Hide the click-text element
+        questionContainer.style.display = 'flex'; // Show the question container
+      }
+    });
 
     // Function to generate a random position for the no-button
     function randomPosition() {
