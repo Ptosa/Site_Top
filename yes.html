@@ -4,7 +4,7 @@
         <style>
             #growing-text {
                 font-size: 10px; /* starting size */
-                animation: grow 5s forwards, rainbow 4s infinite; /* animation name, duration, and fill mode */
+                animation: grow 4s forwards, spin 2s forwards, rainbow 4s infinite; /* animation name, duration, and fill mode */
                 position: absolute; /* take it out of the normal flow */
                 top: 50%; /* move it 50% down from the top */
                 left: 52%; /* move it 50% right from the left */
@@ -33,7 +33,24 @@
                 -webkit-text-fill-color: transparent;
                 background-size: 400% 100%; /* added to make the gradient larger than the text */
                 white-space: nowrap; /* add this property */
-                animation-delay: 2s;
+                animation-delay: 3s;
+            }
+            #growing-text3 {
+                font-size: 1px; /* starting size */
+                animation: grow2 5s forwards, rainbow 10s infinite; /* animation name, duration, and fill mode */
+                position: absolute; /* take it out of the normal flow */
+                top: 85%; /* move it 50% down from the top */
+                left: 52%; /* move it 50% right from the left */
+                transform: translate(-50%, -50%); /* adjust the position to be perfectly centered */
+                text-align: center; /* center the text horizontally */
+                font-family: "Comic Sans MS", cursive;
+                background: linear-gradient(to right,green, yellow, orange, red,orange,yellow,green,blue,indigo, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+                background-clip: text; /* added standard property */
+                -webkit-text-fill-color: transparent;
+                background-size: 400% 100%; /* added to make the gradient larger than the text */
+                white-space: nowrap; /* add this property */
+                animation-delay: 9s;
             }
 
             @keyframes grow {
@@ -53,6 +70,15 @@
                 }
             }
 
+            @keyframes spin {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(1440deg);
+                }
+            }
+
             @keyframes rainbow {
                 0% {
                     background-position: 0% 50%;
@@ -69,5 +95,6 @@
         </video>
         <span id="growing-text">PIOR DECISÃO DA SUA VIDA</span>
         <span id="growing-text2">Agora sustenta essa pika ai</span>
+        <span id="growing-text3">(a minha)</span>
     </body>
 </html>
