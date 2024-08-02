@@ -103,6 +103,15 @@
   </div>
 
   <script>
+let audioPlayed = false;
+document.addEventListener('click', () => {
+  if (!audioPlayed) {
+    const audio = document.querySelector('audio');
+    audio.play();
+    audioPlayed = true;
+  }
+});
+    
     const clickText = document.getElementById('click-text');
     const questionContainer = document.getElementById('question-container');
     const noButton = document.getElementById('no-button');

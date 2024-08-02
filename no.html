@@ -71,4 +71,14 @@
         <span id="growing-text">parabens</span>
         <span id="growing-text2">you've achieved nothing</span>
     </body>
+    <script>
+        let audioPlayed = false;
+document.addEventListener('click', () => {
+  if (!audioPlayed) {
+    const audio = document.querySelector('audio');
+    audio.play();
+    audioPlayed = true;
+  }
+});
+    </script>
 </html>
