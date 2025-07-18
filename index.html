@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yes or No Page</title>
+  <title>L+A</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -87,6 +87,30 @@
         transform: translateX(0);
       }
     }
+    #background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+
+  .bg-image.active {
+    opacity: 1;
+  }
+
   </style>
 </head>
 <body>
@@ -101,6 +125,18 @@
       <a href="no.html"><button id="no-button">Não</button></a>
     </div>
   </div>
+  <div id="background-slideshow">
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0038.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0039.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0040.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0041.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0042.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0043.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0044.jpg');"></div>
+  <div class="bg-image" style="background-image: url('IMG-20250717-WA0045.jpg');"></div>
+  <!-- Adicione quantas quiser -->
+    </div>
+
 
   <script>
 let audioPlayed = false;
@@ -159,6 +195,26 @@ document.addEventListener('click', () => {
 
     // Call the function to generate a new random position on mouseover
     noButton.addEventListener('mouseover', randomPosition);
+    const slides = document.querySelectorAll('.bg-image');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 4000); // troca a cada 4 segundos
+
+    // mostra o primeiro slide inicialmente
+    showSlide(currentSlide);
+
   </script>
 </body>
 </html>
